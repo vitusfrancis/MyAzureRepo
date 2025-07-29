@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Q5etsNG0JKcLMyI6epBF3roe0fgvozD9AiDUt1hJ9VE=",
+  "Source": "DockerImplementation",
+  "BasePath": "_content/DockerImplementation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
