@@ -29,5 +29,5 @@ jobs:
 
       - name: Build and Push Docker image to ACR
         run: |
-          docker build -t $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG DockerImplementation
+          docker build -f DockerImplementation/Dockerfile -t $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG DockerImplementation
           docker push $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG
