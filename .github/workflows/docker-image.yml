@@ -1,0 +1,33 @@
+name: Build and Push Docker image to ACR
+
+on:
+  push:
+    branches:
+      - master  # or "main" if that's your default branch
+
+env:
+  ACR_NAME: ${{ secrets.ACR_NAME }}
+  IMAGE_NAME: dockerimplementation
+  IMAGE_TAG: latest
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Azure CLI - Login to ACR
+        run: |
+          az acr login --name $ACR_NAME
+
+      - name: Build and Push Docker image to ACR
+        run: |
+          docker build -t $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG .
+          docker push $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG
